@@ -53,7 +53,8 @@ function Home() {
             </span>
           </motion.button>
           <ul>
-            {["Home", "About", "Services", "Contact"].map((item, i) => (
+            {["Home", "About", "Services", "Contact","SqlEditor"
+            ].map((item, i) => (
                 <motion.li
                 key={item}
                 initial={{ opacity: 0, x: -20 }} // Start hidden & slightly left
