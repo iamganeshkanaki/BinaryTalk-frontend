@@ -23,16 +23,17 @@ const SqlEditor = () => {
     const connectDatabase = async () => {
         setError(null);
         try {
-            const response = await axios.post(" ", dbConfig);
-            if (response.data.success) {
+            const response = await axios.post("http://localhost:8000/api/connect-db/", dbConfig);
+            if (response.data.status = 200) {  // ✅ Correctly check for "success: true"
                 setIsConnected(true);
             } else {
-                setError("Failed to connect to the database.");
+                setError(response.data.error || "Failed to connect to the database.");
             }
         } catch (err) {
-            setError("Error connecting to the database.");
+            setError(err.response?.data?.error || "Error connecting to the database.");
         }
     };
+    
 
     // Disconnect from Database
     const disconnectDatabase = async () => {
